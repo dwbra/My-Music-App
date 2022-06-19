@@ -1,0 +1,28 @@
+.navbar {
+  &__heading {
+    text-align: center;
+  }
+  &__content {
+    text-align: center;
+    h5 {
+      margin: 0;
+    }
+    div:nth-of-type(1) {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      p,
+      a {
+        margin-right: 30px;
+        color: white;
+        text-decoration: none;
+      }
+      a:hover {
+        border-bottom: 1px solid orange;
+        padding-bottom: 3px;
+        font-size: 19px;
+        transition: ease-in-out 0.4s;
+      }
+    }
+  }
+}
