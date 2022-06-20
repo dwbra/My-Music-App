@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
           section.
         </h5>
         <div>
-          <a href="#">Spotify</a>
+          <a href="#spotify-anchor">Spotify</a>
           <a href="#">Soundcloud</a>
           <a href="#">Youtube</a>
           <a href="#">Itunes</a>

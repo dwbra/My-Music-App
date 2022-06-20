@@ -22,14 +22,38 @@ const GetPlaylists = (props: Props) => {
   console.log(playlistStatus);
   console.log(myPlaylists);
 
+  let initialImagesToShow = 8;
+  const [next, setNext] = useState(initialImagesToShow);
+
+  const handleMoreImage = () => {
+    setNext(next + 4);
+  };
+
   return (
-    <div>
-      {myPlaylists.map((list) => (
-        <div key={list["id"]}>
-          <h1>{list["name"]}</h1>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="spotify">
+        {/* on initial load, only display 8 images.
+      on button click, increase next state which triggers a re-render, then the slice will slice from 0 - 8 + 4 = 12 to display */}
+        {myPlaylists?.slice(0, next)?.map((list, index) => (
+          <div className="spotify__grid" key={list["id"]} id="spotify-anchor">
+            <a href={list["external_urls"]["spotify"]}>
+              <img src={list["images"][0]["url"]} alt={list["description"]} />
+              <h3>{list["name"]}</h3>
+            </a>
+            <p>{list["description"]}</p>
+            <a href={list["external_urls"]["spotify"]}>
+              <button>View tracklist</button>
+            </a>
+          </div>
+        ))}
+        {/* only show the button if the number in state is lower than the total array length */}
+      </div>
+      <div className="spotify__grid--loadmore">
+        {next < myPlaylists?.length && (
+          <button onClick={handleMoreImage}>Load more</button>
+        )}
+      </div>
+    </>
   );
 };
 

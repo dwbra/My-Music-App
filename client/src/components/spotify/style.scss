@@ -1,0 +1,34 @@
+.spotify {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
+  margin: 40px 0;
+  &__grid {
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+    p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    &--loadmore {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      button {
+        padding: 10px 50px;
+      }
+    }
+  }
+}
