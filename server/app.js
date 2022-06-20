@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import spotifyRoutes from "./routes/spotifyRoutes.js";
+import { spotifyAuth } from "./controllers/spotifyController.js";
 
 // //initiate express to be able to call methods from.
 const app = express();
@@ -13,7 +14,13 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// //use express to set the route paths for various APIS
+//use express to set the route paths for various APIS
+//use express Application-level middleware to run the spotify auth function every time the app receives a request.
+///https://expressjs.com/en/guide/using-middleware.html
+app.use("/spotify", (req, res, next) => {
+  spotifyAuth();
+  next();
+});
 app.use("/spotify", spotifyRoutes);
 
 const PORT = process.env.PORT || 9000;

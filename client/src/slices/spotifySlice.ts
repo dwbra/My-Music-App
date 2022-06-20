@@ -4,13 +4,13 @@ import * as api from "../api";
 interface InitialStateTyped {
   status: string;
   error: string;
-  playlists: {};
+  playlists: [];
 }
 
 const initialState: InitialStateTyped = {
   status: "idle",
   error: "",
-  playlists: {}
+  playlists: []
 };
 
 export const getUserPlaylists = createAsyncThunk(

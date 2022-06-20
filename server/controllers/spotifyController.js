@@ -12,13 +12,13 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 // Retrieve an access token for use in all spotify API calls
-const spotifyAuth = (req, res) => {
+export const spotifyAuth = async (req, res) => {
   spotifyApi
     .clientCredentialsGrant()
     .then(data => {
       //log it out to the server (terminal on local) to view results
-      // console.log("The access token expires in " + data.body["expires_in"]);
-      // console.log("The access token is " + data.body["access_token"]);
+      console.log("The access token expires in " + data.body["expires_in"]);
+      console.log("The access token is " + data.body["access_token"]);
 
       //save the access token so that it's used in future calls
       spotifyApi.setAccessToken(data.body["access_token"]);
