@@ -12,8 +12,18 @@
       object-fit: cover;
       width: 100%;
     }
+    button {
+      background-color: #9f2bd3;
+      color: #fff;
+      border: 3px solid #9f2bd3;
+      border-radius: 25px;
+      padding: 10px 16px;
+      font-size: 16px;
+    }
     button:hover {
       cursor: pointer;
+      background-color: transparent;
+      color: #fff;
     }
     p {
       overflow: hidden;
@@ -27,7 +37,17 @@
       justify-content: center;
       margin: 20px 0;
       button {
-        padding: 10px 50px;
+        padding: 10px 100px;
+        background-color: #9f2bd3;
+        color: #fff;
+        border: 3px solid #9f2bd3;
+        border-radius: 25px;
+        font-size: 16px;
+        &:hover {
+          cursor: pointer;
+          background-color: transparent;
+          color: #fff;
+        }
       }
     }
   }

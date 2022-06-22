@@ -5,8 +5,9 @@ import dotenv from "dotenv";
 import spotifyRoutes from "./routes/spotifyRoutes.js";
 import { spotifyAuth } from "./controllers/spotifyController.js";
 
-// //initiate express to be able to call methods from.
+//initiate express to be able to call methods from.
 const app = express();
+//gain access to our environment variables
 dotenv.config();
 
 app.use(express.json({ limit: "30mb", extended: true }));

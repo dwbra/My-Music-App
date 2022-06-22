@@ -7,12 +7,14 @@ interface InitialStateTyped {
   playlists: [];
 }
 
+//initialize the slice with some initial state and type expected outcomes.
 const initialState: InitialStateTyped = {
   status: "idle",
   error: "",
   playlists: []
 };
 
+//create the thunk to request the playlists from the server
 export const getUserPlaylists = createAsyncThunk(
   "spotify/getUserPlaylists",
   async () => {
@@ -32,6 +34,7 @@ export const spotifySlice = createSlice({
       })
       .addCase(getUserPlaylists.fulfilled, (state, action) => {
         state.status = "fulfilled";
+        //set the state to be the array of playlist objects from the server response
         state.playlists = action.payload.items;
       })
       .addCase(getUserPlaylists.rejected, (state, action) => {

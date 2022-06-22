@@ -19,12 +19,9 @@ const GetPlaylists = (props: Props) => {
     }
   });
 
-  console.log(playlistStatus);
-  console.log(myPlaylists);
-
+  //create a function using state to handle how many playlists to show on inital load and then on load more button click.
   let initialImagesToShow = 8;
   const [next, setNext] = useState(initialImagesToShow);
-
   const handleMoreImage = () => {
     setNext(next + 4);
   };
