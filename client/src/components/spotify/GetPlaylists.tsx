@@ -28,11 +28,12 @@ const GetPlaylists = (props: Props) => {
 
   return (
     <>
+      <h2 id="spotify-anchor">Spotify Playlists</h2>
       <div className="spotify">
         {/* on initial load, only display 8 images.
       on button click, increase next state which triggers a re-render, then the slice will slice from 0 - 8 + 4 = 12 to display */}
         {myPlaylists?.slice(0, next)?.map((list, index) => (
-          <div className="spotify__grid" key={list["id"]} id="spotify-anchor">
+          <div className="spotify__grid" key={list["id"]}>
             <a href={list["external_urls"]["spotify"]}>
               <img src={list["images"][0]["url"]} alt={list["description"]} />
               <h3>{list["name"]}</h3>

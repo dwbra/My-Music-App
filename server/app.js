@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import spotifyRoutes from "./routes/spotifyRoutes.js";
 import { spotifyAuth } from "./controllers/spotifyController.js";
 
+import youtubeRoutes from "./routes/youtubeRoutes.js";
+
 //initiate express to be able to call methods from.
 const app = express();
 //gain access to our environment variables
@@ -23,6 +25,7 @@ app.use("/spotify", (req, res, next) => {
   next();
 });
 app.use("/spotify", spotifyRoutes);
+app.use("/youtube", youtubeRoutes);
 
 const PORT = process.env.PORT || 9000;
 
