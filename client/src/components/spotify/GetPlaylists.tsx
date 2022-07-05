@@ -13,8 +13,8 @@ const GetPlaylists = (props: Props) => {
   });
 
   //grab the initial status from the slice to use to prevent multiple re-renders
-  const playlistStatus = useAppSelector((state) => state.spotify.status);
-  const playlistErrors = useAppSelector((state) => state.spotify.error);
+  let playlistStatus = useAppSelector((state) => state.spotify.status);
+  let playlistErrors = useAppSelector((state) => state.spotify.error);
   console.log(playlistStatus);
   console.log(playlistErrors);
 
@@ -26,7 +26,7 @@ const GetPlaylists = (props: Props) => {
   }, []);
 
   //grab the newly set playlists global state from the dispatch to use to render out on the frontend
-  const myPlaylists = useAppSelector((state) => state.spotify.playlists);
+  let myPlaylists = useAppSelector((state) => state.spotify.playlists);
   console.log(myPlaylists);
 
   //create a function using state to handle how many playlists to show on inital load and then on load more button click.
