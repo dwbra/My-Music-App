@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 
 import spotifySlice from "./slices/spotifySlice";
+import youtubeSlice from "./slices/youtubeSlice";
 
 const store = configureStore({
   reducer: {
-    spotify: spotifySlice
+    spotify: spotifySlice,
+    youtube: youtubeSlice
   }
 });
 

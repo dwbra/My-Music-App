@@ -1,10 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
 
+//type the playlist objects that will be in the api response array
+interface IPlaylist {
+  description: string;
+  external_urls: { spotify: string };
+  id: string;
+  name: string;
+  images: [
+    {
+      url: string;
+    }
+  ];
+}
+
+//add inital typing to the original state
 interface InitialStateTyped {
   status: string;
   error: string;
-  playlists: [];
+  //show that the arrays will contain objects typed above
+  playlists: IPlaylist[];
 }
 
 //initialize the slice with some initial state and type expected outcomes.
@@ -14,11 +29,16 @@ const initialState: InitialStateTyped = {
   playlists: []
 };
 
+interface SpotifyParams {
+  limit: number;
+  offset: number;
+}
+
 //create the thunk to request the playlists from the server
 export const getUserPlaylists = createAsyncThunk(
   "spotify/getUserPlaylists",
-  async () => {
-    const response = await api.getUserPlaylists();
+  async (options: SpotifyParams) => {
+    const response = await api.getUserPlaylists(options);
     return response.data;
   }
 );
@@ -30,17 +50,26 @@ export const spotifySlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getUserPlaylists.pending, (state, action) => {
-        state.status = "loading";
+        return {
+          ...state,
+          status: "loading"
+        };
       })
       .addCase(getUserPlaylists.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        //set the state to be the array of playlist objects from the server response
-        state.playlists = action.payload.items;
+        return {
+          ...state,
+          status: "fulfilled",
+          //use the spread operator to join the two arrays
+          playlists: [...state.playlists, ...action.payload.items]
+        };
       })
       .addCase(getUserPlaylists.rejected, (state, action) => {
-        state.status = "failed";
-        //type assertion https://bobbyhadz.com/blog/typescript-type-unknown-is-not-assignable-to-type
-        state.error = action.error.message as string;
+        return {
+          ...state,
+          status: "failed",
+          //type assertion https://bobbyhadz.com/blog/typescript-type-unknown-is-not-assignable-to-type
+          error: action.error.message as string
+        };
       });
   }
 });
