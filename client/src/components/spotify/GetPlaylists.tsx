@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { getUserPlaylists } from "../../slices/spotifySlice";
-import { createSelector } from "reselect";
 
 type Props = {};
 
