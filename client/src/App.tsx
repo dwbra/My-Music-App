@@ -8,10 +8,10 @@ import GetYoutubePlaylists from "./components/youtube/GetYoutubePlaylists";
 function App() {
   return (
     <>
-      <BackToTop />
       <Navbar />
       <GetPlaylists />
       <GetYoutubePlaylists />
+      <BackToTop />
     </>
   );
 }

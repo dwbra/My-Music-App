@@ -28,7 +28,7 @@ export const spotifyAuth = async (req, res) => {
 };
 
 export const getSpotifyPlaylists = async (req, res) => {
-  // console.log(req.body);
+  // console.log(req);
   spotifyApi
     //customie the limit of the api call by passing an object as a param in the method
     .getUserPlaylists("danielworkman12", {
@@ -36,7 +36,7 @@ export const getSpotifyPlaylists = async (req, res) => {
       offset: req.body.offset
     })
     .then(data => {
-      // console.log("Retrieved playlists", data.body);
+      console.log("Retrieved playlists", data.body);
       //https://expressjs.com/en/api.html#res.json
       res.json(data.body);
     })

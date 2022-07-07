@@ -39,6 +39,7 @@ export const getUserPlaylists = createAsyncThunk(
   "spotify/getUserPlaylists",
   async (options: SpotifyParams) => {
     const response = await api.getUserPlaylists(options);
+    // console.log(response);
     return response.data;
   }
 );

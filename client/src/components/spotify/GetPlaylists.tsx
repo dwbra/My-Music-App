@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { getUserPlaylists } from "../../slices/spotifySlice";
+import { createSelector } from "reselect";
 
 type Props = {};
 
@@ -14,20 +15,17 @@ const GetPlaylists = (props: Props) => {
 
   //grab the initial status from the slice to use to prevent multiple re-renders
   let playlistStatus = useAppSelector((state) => state.spotify.status);
-  let playlistErrors = useAppSelector((state) => state.spotify.error);
+  // let playlistErrors = useAppSelector((state) => state.spotify.error);
   console.log(playlistStatus);
-  console.log(playlistErrors);
+  // console.log(playlistErrors);
 
   //check global state of the playlist status and if idle, pull the data from the server
   useEffect(() => {
+    // dispatch(getUserPlaylists(options));
     if (playlistStatus === "idle") {
       dispatch(getUserPlaylists(options));
     }
   }, []);
-
-  //grab the newly set playlists global state from the dispatch to use to render out on the frontend
-  let myPlaylists = useAppSelector((state) => state.spotify.playlists);
-  console.log(myPlaylists);
 
   //create a function using state to handle how many playlists to show on inital load and then on load more button click.
   let initialImagesToShow = 8;
@@ -47,6 +45,10 @@ const GetPlaylists = (props: Props) => {
       offset: 0
     });
   };
+
+  //grab the newly set playlists global state from the dispatch to use to render out on the frontend
+  const myPlaylists = useAppSelector((state) => state.spotify.playlists);
+  console.log(myPlaylists);
 
   return (
     <>
@@ -77,9 +79,9 @@ const GetPlaylists = (props: Props) => {
       {/* only show the button if the number in state is lower than the total array length */}
       <div className="spotify__grid--loadmore">
         {next < myPlaylists?.length ? (
-          <button onClick={handleMoreImage}>Load more</button>
+          <button onClick={() => handleMoreImage}>Load more</button>
         ) : (
-          <button onClick={getMorePlaylists}>Load more</button>
+          <button onClick={() => getMorePlaylists}>Load more</button>
         )}
       </div>
     </>
