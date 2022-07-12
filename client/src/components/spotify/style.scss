@@ -4,6 +4,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
   margin: 40px 0;
   &__grid {
+    word-break: break-word;
     a {
       color: white;
       text-decoration: none;

@@ -20,13 +20,15 @@ interface InitialStateTyped {
   error: string;
   //show that the arrays will contain objects typed above
   playlists: IPlaylist[];
+  totalPlaylists: number;
 }
 
 //initialize the slice with some initial state and type expected outcomes.
 const initialState: InitialStateTyped = {
   status: "idle",
   error: "",
-  playlists: []
+  playlists: [],
+  totalPlaylists: 0
 };
 
 interface SpotifyParams {
@@ -60,6 +62,7 @@ export const spotifySlice = createSlice({
         return {
           ...state,
           status: "fulfilled",
+          totalPlaylists: action.payload.total,
           //use the spread operator to join the two arrays
           playlists: [...state.playlists, ...action.payload.items]
         };
