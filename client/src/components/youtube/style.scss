@@ -1,0 +1,56 @@
+.youtube {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
+  margin: 40px 0;
+  &__grid {
+    position: relative;
+    word-break: break-word;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    button {
+      background-color: #9f2bd3;
+      color: #fff;
+      border: 3px solid #9f2bd3;
+      border-radius: 25px;
+      padding: 10px 16px;
+      font-size: 16px;
+    }
+    button:hover {
+      cursor: pointer;
+      background-color: transparent;
+      color: #fff;
+    }
+    p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    &--loadmore {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      button {
+        padding: 10px 100px;
+        background-color: #9f2bd3;
+        color: #fff;
+        border: 3px solid #9f2bd3;
+        border-radius: 25px;
+        font-size: 16px;
+        &:hover {
+          cursor: pointer;
+          background-color: transparent;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
