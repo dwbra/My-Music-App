@@ -19,7 +19,7 @@ export const getYoutubePlaylists = async (req, res) => {
       maxResults: 50
     })
     .then(data => {
-      console.log(data);
+      // console.log(data);
       res.json(data);
     })
     .catch(err => {

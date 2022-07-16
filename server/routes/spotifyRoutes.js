@@ -5,6 +5,6 @@ import { getSpotifyPlaylists } from "../controllers/spotifyController.js";
 const router = express.Router();
 
 //create a get request pathway for the frontend to pull users playlists
-router.get("/get-playlists", getSpotifyPlaylists);
+router.post("/get-playlists", getSpotifyPlaylists);
 
 export default router;

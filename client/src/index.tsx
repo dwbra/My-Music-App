@@ -11,11 +11,13 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  //https://stackoverflow.com/questions/62324139/why-is-my-react-component-rendering-twice-on-initial-load
+  //remove strict mode to stop double re-renders
+  // <React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

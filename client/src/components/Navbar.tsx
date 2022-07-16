@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
         <div>
           <a href="#spotify-anchor">Spotify</a>
           <a href="#">Soundcloud</a>
-          <a href="#">Youtube</a>
+          <a href="#youtube-anchor">Youtube</a>
           <a href="#">Itunes</a>
           <a href="#">Songkick</a>
           <a href="#">Bandsintown</a>
