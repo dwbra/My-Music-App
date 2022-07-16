@@ -15,12 +15,11 @@ const Navbar = (props: Props) => {
         </h5>
         <div>
           <a href="#spotify-anchor">Spotify</a>
-          <a href="#">Soundcloud</a>
+          {/* not currently allowing new api users */}
+          {/* <a href="#">Soundcloud</a> */}
           <a href="#youtube-anchor">Youtube</a>
-          <a href="#">Itunes</a>
-          <a href="#">Songkick</a>
-          <a href="#">Bandsintown</a>
-          <a href="#">RA Guide</a>
+          {/* not currently allowing new api users */}
+          {/* <a href="#">Songkick</a> */}
           <a href="#">Eventbrite</a>
         </div>
       </div>
