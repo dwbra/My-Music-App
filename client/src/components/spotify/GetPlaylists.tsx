@@ -44,7 +44,7 @@ const GetPlaylists = (props: Props) => {
   //create a function using state to handle how many playlists to show on inital load and then on load more button click.
   let initialImagesToShow = 8;
   const [nextSpotify, setNextSpotify] = useState(initialImagesToShow);
-  const handleGetMoreSpotifyPlaylists = () => {
+  const handleShowMoreSpotifyPlaylists = () => {
     setNextSpotify(nextSpotify + 4);
   };
 
@@ -90,7 +90,7 @@ const GetPlaylists = (props: Props) => {
       {/* only show the button if the number in state is lower than the total array length */}
       <div className="spotify__grid--loadmore">
         {nextSpotify < myPlaylists?.length && (
-          <button onClick={handleGetMoreSpotifyPlaylists}>Load more</button>
+          <button onClick={handleShowMoreSpotifyPlaylists}>Load more</button>
         )}
         {showGetMorePlaylistsButton && (
           <button
